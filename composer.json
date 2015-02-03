@@ -1,0 +1,31 @@
+{
+    "name": "darsadow/holiday-calendar",
+    "type": "library",
+    "description": "Holiday aware calendar for PHP",
+    "keywords": ["framework"],
+    "homepage": "http://darsadow.com",
+    "license": "MIT",
+    "version": "0.0.1",
+    "authors": [
+        {
+            "name": "Dariusz Sadowski",
+            "email": "darsadow@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.4.5"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "Darsadow\\HolidayCalendar\\": "src/",
+            "Darsadow\\HolidayCalendar\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "bin-dir": "bin"
+    }
+}
