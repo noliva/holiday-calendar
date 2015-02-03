@@ -8,5 +8,5 @@ interface Specification
      * @param \DateTime $date
      * @return bool
      */
-    public function isSatisfiedBy(\DatetIme $date);
+    public function isSatisfiedBy(\DateTime $date);
 }

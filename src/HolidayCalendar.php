@@ -24,6 +24,10 @@ class HolidayCalendar
     }
 
     /**
+     * This function will return a date after
+     * adding specified number of working days
+     * to a given date.
+     *
      * @param \DateTime $date
      * @param integer $days
      *
@@ -44,6 +48,42 @@ class HolidayCalendar
 
         while ($days != 0) {
             $date->modify('+1 day');
+
+            if ($this->isHoliday($date)) {
+                continue;
+            }
+
+            if (0 == --$days) {
+                return $date;
+            }
+        }
+    }
+
+    /**
+     * This function will return a date
+     * subtracted by specified number of
+     * working days to a given date.
+     *
+     * @param \DateTime $date
+     * @param integer $days
+     *
+     * @return \DateTime
+     */
+    public function subtractWorkingDays(\DateTime $date, $days)
+    {
+        if (!is_integer($days)) {
+            throw new \InvalidArgumentException('$days parameters has to be and integer');
+        }
+        if (0 > $days) {
+            throw new \InvalidArgumentException('$days parameters has to be and integer');
+        }
+
+        if (0 === $days) {
+            return $date;
+        }
+
+        while ($days != 0) {
+            $date->modify('-1 day');
 
             if ($this->isHoliday($date)) {
                 continue;

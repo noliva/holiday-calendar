@@ -24,6 +24,14 @@ class NewYearsDayTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($result);
     }
 
+    public function testNewYearsDayMoved()
+    {
+        $date = new \DateTime('2012-01-02');
+        $result = $this->specification->isSatisfiedBy($date);
+
+        $this->assertTrue($result);
+    }
+
     public function testInvalidDate()
     {
         $date = new \DateTime('2015-05-15');

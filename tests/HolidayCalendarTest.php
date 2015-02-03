@@ -25,18 +25,18 @@ class HolidayCalendarTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('07', $endDate->format('d'));
     }
 
-    public function testAddingWorkingDaysDuringEaster()
+    public function testSubtractingWorkingDays()
     {
         $calendar = new HolidayCalendar();
-        $calendar->addHolidaySpecification(new EasterMonday());
+        $calendar->addHolidaySpecification(new NewYearsDay());
         $calendar->addHolidaySpecification(new Saturday());
         $calendar->addHolidaySpecification(new Sunday());
-        $startDate = new \DateTime('2015-04-03');
+        $startDate = new \DateTime('2015-01-07');
 
-        $endDate = $calendar->addWorkingDays($startDate, 5);
+        $endDate = $calendar->subtractWorkingDays($startDate, 5);
 
-        $this->assertEquals('2015', $endDate->format('Y'));
-        $this->assertEquals('04', $endDate->format('m'));
-        $this->assertEquals('13', $endDate->format('d'));
+        $this->assertEquals('2014', $endDate->format('Y'));
+        $this->assertEquals('12', $endDate->format('m'));
+        $this->assertEquals('30', $endDate->format('d'));
     }
 }

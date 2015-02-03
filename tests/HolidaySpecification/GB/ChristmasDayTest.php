@@ -31,4 +31,12 @@ class ChristmasDayTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue($result);
     }
+
+    public function testChristmasDayDateSunday()
+    {
+        $christmasDayDate = new \DateTime('2011-12-27');
+        $result = $this->specification->isSatisfiedBy($christmasDayDate);
+
+        $this->assertTrue($result);
+    }
 }

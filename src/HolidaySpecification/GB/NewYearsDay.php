@@ -12,7 +12,18 @@ class NewYearsDay implements Specification
      */
     public function isSatisfiedBy(\DatetIme $date)
     {
-        return $date->format('m') === '01' && $date->format('d') === '01';
+        $newYearsDate = new \DateTime($date->format('Y') . '-01-01');
+
+        if ($newYearsDate->format('N') === '6') {
+            $newYearsDate->modify('+2 days');
+        }
+
+        if ($newYearsDate->format('N') === '7') {
+            $newYearsDate->modify('+1 days');
+        }
+
+        return $date->format('m') === $newYearsDate->format('m')
+            && $date->format('d') === $newYearsDate->format('d');
     }
 
 }
